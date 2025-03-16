@@ -15,9 +15,9 @@ local nn = NeuralNet.new(config)
 -- Training Data (AND Gate)
 local trainingData = {
     {inputs = {0, 0}, target = 0},
-    {inputs = {0, 1}, target = 1},
-    {inputs = {1, 0}, target = 1},
-    {inputs = {1, 1}, target = 0}
+    {inputs = {0, 1}, target = 0},
+    {inputs = {1, 0}, target = 0},
+    {inputs = {1, 1}, target = 1}
 }
 
 -- Training parameters
