@@ -407,6 +407,16 @@ function NeuralNet.new(config)
                 print(string.format("Warning: Loaded model hidden size (%d) differs from current config (%d)", 
                     meta.config.hiddenSize, self.hiddenSize))
             end
+            
+            -- Restore activation function
+            if meta.config.activation then
+                self.activation = Activations[meta.config.activation]
+                if not self.activation then
+                    print(string.format("Warning: Unknown activation function '%s', using sigmoid", meta.config.activation))
+                    self.activation = Activations.sigmoid
+                end
+            end
+            
             print(string.format("Loading model trained with %s activation function", meta.config.activation))
             print(string.format("Model was saved on: %s", os.date("%Y-%m-%d %H:%M:%S", meta.timestamp)))
             print(string.format("Total previous training epochs: %d", meta.config.totalTrainingEpochs or 0))
